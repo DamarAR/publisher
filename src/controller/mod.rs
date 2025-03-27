@@ -9,5 +9,6 @@ pub mod product;
              .mount("/product", routes![product::create, product::list, product::read, product::delete])
              .mount("/notification", routes![])
              .mount("/notification", routes![notification::subscribe])
+             .mount("/notification", routes![notification::subscribe, notification::unsubscribe])
      });
  }
