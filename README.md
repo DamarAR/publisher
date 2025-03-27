@@ -94,16 +94,21 @@ The Singleton pattern ensures there's only one instance of something globally, b
 1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
 
 Splitting the Service and Repository layers from the Model helps create a clean, well-structured codebase. Each part has its own defined role: Models manage the data structure, Repositories handle data access and persistence, and Services deal with the business logic. This separation improves readability, testing, and long-term maintainability. It also supports scalability, helping the application grow without turning into a tangled mess.
+
 2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
 
 If we only rely on Models for everything, they become overloaded with responsibilities—they’d manage data, handle logic, and communicate with the database all at once. This results in tightly coupled code that’s difficult to read, test, or maintain. For example, interactions between Program, Subscriber, and Notification would become more complex, and even a minor update in one model might unintentionally affect others. By separating out Services and Repositories, we keep responsibilities clear and the codebase more modular and maintainable.
-3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+3. Have you explored more about Postman?
+
+Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
 
 Yes, I’ve been using Postman to test API endpoints, and it’s been very useful for ensuring that my backend functions as intended. It's a valuable tool, especially in team projects, for testing requests and responses efficiently. Features I find helpful include saving request collections, organizing them by project, setting environment variables, and viewing detailed response data. These features make it easier to debug and collaborate during group or future software development projects.
 #### Reflection Publisher-3
 1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
 
 The tutorial uses the Push Model. In this approach, the publisher directly sends complete notification data to each subscriber via their update method. Subscribers don’t ask for information—they simply receive whatever the publisher pushes to them.
+
 2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
 
 Advantages:
@@ -114,6 +119,7 @@ The Pull Model allows observers to decide when they want to fetch updates. This 
 Disadvantages:
 
 The main drawback of the Pull Model is figuring out the right moment for observers to request updates. If they check too frequently, it could cause excessive traffic and unnecessary processing, even if no data has changed. On the other hand, checking too infrequently might result in delays or missed updates, especially if changes happen between intervals.
+
 3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
 
 If notifications were sent without multi-threading, they’d be delivered to subscribers one at a time, in order. If one subscriber is slow to respond, it can block or delay notifications to the others. As the number of subscribers grows, the system would become slower and less efficient. Using multi-threading allows each subscriber to be updated concurrently, making the system faster and more scalable.
